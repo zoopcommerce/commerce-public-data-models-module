@@ -83,7 +83,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *         }
  *     )
  * })
- * 
+ *
  * @SuppressWarnings(PHPMD.ExcessivePublicCount)
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)

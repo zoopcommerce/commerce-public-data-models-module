@@ -22,7 +22,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *          allow="delete"
  *     )
  * })
- * 
+ *
  * @SuppressWarnings(PHPMD.LongVariable)
  */
 class Total implements TotalInterface
