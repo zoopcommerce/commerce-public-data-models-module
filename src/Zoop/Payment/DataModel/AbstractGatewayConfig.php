@@ -20,7 +20,7 @@ use Zoop\Store\DataModel\Store;
  * @ODM\DiscriminatorMap({
  *     "Paypal\ExpressCheckout" = "Zoop\Payment\Gateway\PayPal\ExpressCheckout\DataModel\GatewayConfig",
  *     "Pin"                    = "Zoop\Payment\Gateway\Pin\DataModel\GatewayConfig",
- *     "Stripe"                 = "Zoop\Payment\Gateway\StGeorge\DataModel\GatewayConfig"
+ *     "Stripe"                 = "Zoop\Payment\Gateway\Stripe\DataModel\GatewayConfig"
  * })
  */
 abstract class AbstractGatewayConfig
