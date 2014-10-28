@@ -3,13 +3,13 @@
 namespace Zoop\Payment\Gateway\Paypal\ExpressCheckout\DataModel;
 
 use Zoop\Payment\DataModel\AbstractGatewayConfig;
-//Annotation imports
-use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Zoop\Shard\Annotation\Annotations as Shard;
 use Zoop\Payment\DataModel\UsernameTrait;
 use Zoop\Payment\DataModel\PasswordTrait;
 use Zoop\Payment\DataModel\SignatureTrait;
 use Zoop\Payment\DataModel\PaypalGatewayConfigInterface;
+//Annotation imports
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Zoop\Shard\Annotation\Annotations as Shard;
 
 /**
  * @ODM\Document

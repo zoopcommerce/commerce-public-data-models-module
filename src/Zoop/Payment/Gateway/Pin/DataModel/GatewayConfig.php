@@ -3,10 +3,10 @@
 namespace Zoop\Payment\Gateway\Pin\DataModel;
 
 use Zoop\Payment\DataModel\AbstractGatewayConfig;
+use Zoop\Payment\DataModel\PinGatewayConfigInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
-use Zoop\Payment\DataModel\PinGatewayConfigInterface;
 
 /**
  * @ODM\Document

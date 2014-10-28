@@ -3,10 +3,10 @@
 namespace Zoop\Payment\Gateway\Stripe\DataModel;
 
 use Zoop\Payment\DataModel\AbstractGatewayConfig;
+use Zoop\Payment\DataModel\StripeGatewayConfigInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
-use Zoop\Payment\DataModel\StripeGatewayConfigInterface;
 
 /**
  * @ODM\Document
