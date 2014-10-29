@@ -2,16 +2,19 @@
 
 namespace Zoop\Payment\DataModel;
 
+use Zoop\Store\DataModel\StoresTrait;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
 use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
+use Zoop\Store\DataModel\StoreTrait;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
-use Zoop\Store\DataModel\Store;
+
 
 /**
  * @ODM\Document(collection="PaymentGateway")
@@ -29,6 +32,7 @@ abstract class AbstractGatewayConfig
     use CreatedByTrait;
     use UpdatedOnTrait;
     use UpdatedByTrait;
+    use StoreTrait;
     use SoftDeleteableTrait;
 
     /**
@@ -41,15 +45,6 @@ abstract class AbstractGatewayConfig
      * @ODM\Int
      */
     protected $legacyId;
-
-    /**
-     *
-     * @ODM\ReferenceOne
-     *     targetDocument="Zoop\Store\DataModel\Store",
-     *     cascade="all"
-     * )
-     */
-    protected $store;
 
     /**
      *
@@ -104,16 +99,6 @@ abstract class AbstractGatewayConfig
     public function setLegacyId($legacyId)
     {
         $this->legacyId = (int) $legacyId;
-    }
-
-    public function getStore()
-    {
-        return $this->store;
-    }
-
-    public function setStore($store)
-    {
-        $this->store = $store;
     }
 
     /**
