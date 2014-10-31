@@ -3,9 +3,11 @@
 namespace Zoop\Theme\DataModel;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Zoop\Common\DataModel\Image;
+use Zoop\Common\File\DataModel\ImageInterface;
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
+use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
+use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
 use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -27,9 +29,10 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 abstract class AbstractTheme
 {
     use CreatedOnTrait;
-    use UpdatedOnTrait;
+    use CreatedByTrait;
     use SoftDeleteableTrait;
-
+    use UpdatedOnTrait;
+    use UpdatedByTrait;
     /**
      * @ODM\Id
      */
@@ -153,14 +156,14 @@ abstract class AbstractTheme
      */
     public function getAssets()
     {
-        if (empty($this->assets)) {
+        if (!isset($this->assets)) {
             $this->assets = new ArrayCollection;
         }
         return $this->assets;
     }
 
     /**
-     * @param ArrayCollection|array $stores $assets
+     * @param ArrayCollection|array $assets
      */
     public function setAssets($assets)
     {
@@ -175,12 +178,14 @@ abstract class AbstractTheme
      */
     public function addAsset(AssetInterface $asset)
     {
-        $this->getAssets()->add($asset);
+        if (!$this->getAssets()->contains($asset)) {
+            $this->getAssets()->add($asset);
+        }
     }
 
     /**
      *
-     * @return Image
+     * @return ImageInterface
      */
     public function getScreenshot()
     {
@@ -189,9 +194,9 @@ abstract class AbstractTheme
 
     /**
      *
-     * @param Image $screenshot
+     * @param ImageInterface $screenshot
      */
-    public function setScreenshot(Image $screenshot)
+    public function setScreenshot(ImageInterface $screenshot)
     {
         $this->screenshot = $screenshot;
     }
