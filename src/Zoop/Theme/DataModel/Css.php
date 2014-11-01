@@ -15,7 +15,6 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 class Css extends AbstractContentAsset implements AssetInterface
 {
     /**
-     *
      * @ODM\String
      */
     protected $href;

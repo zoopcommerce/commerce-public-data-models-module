@@ -15,13 +15,11 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 class GzippedJavascript extends AbstractFileAsset implements AssetInterface
 {
     /**
-     *
      * @ODM\String
      */
     protected $src;
 
     /**
-     *
      * @ODM\String
      * @Shard\Unserializer\Ignore
      */

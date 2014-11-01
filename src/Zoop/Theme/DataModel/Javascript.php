@@ -15,13 +15,11 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 class Javascript extends AbstractContentAsset implements AssetInterface
 {
     /**
-     *
      * @ODM\String
      */
     protected $src;
 
     /**
-     *
      * @return string
      */
     public function getSrc()
@@ -30,7 +28,6 @@ class Javascript extends AbstractContentAsset implements AssetInterface
     }
 
     /**
-     *
      * @param string $src
      */
     public function setSrc($src)

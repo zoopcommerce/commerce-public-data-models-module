@@ -3,7 +3,9 @@
 namespace Zoop\Theme\DataModel;
 
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
+use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
+use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
 use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -30,8 +32,10 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 abstract class AbstractAsset
 {
     use CreatedOnTrait;
-    use UpdatedOnTrait;
+    use CreatedByTrait;
     use SoftDeleteableTrait;
+    use UpdatedOnTrait;
+    use UpdatedByTrait;
 
     /**
      * @ODM\Id
@@ -39,26 +43,22 @@ abstract class AbstractAsset
     protected $id;
 
     /**
-     *
      * @ODM\String
      */
     protected $name;
 
     /**
-     *
      * @ODM\String
      * @ODM\Index
      */
     protected $pathname;
 
     /**
-     *
      * @ODM\String
      */
     protected $path;
 
     /**
-     *
      * @ODM\ReferenceOne(
      *      discriminatorMap={
      *          "Folder"        = "Zoop\Theme\DataModel\Folder",
@@ -74,7 +74,6 @@ abstract class AbstractAsset
     protected $parent;
 
     /**
-     *
      * @ODM\ReferenceOne(
      *      discriminatorMap={
      *          "PrivateTheme"  = "Zoop\Theme\DataModel\PrivateTheme",
@@ -88,56 +87,53 @@ abstract class AbstractAsset
     protected $theme;
 
     /**
-     *
      * @ODM\Boolean
      * @Shard\Unserializer\Ignore
      */
     protected $writable = true;
 
     /**
-     *
      * @ODM\Boolean
      * @Shard\Unserializer\Ignore
      */
     protected $deletable = true;
 
     /**
-     *
-     * @ODM\Date
-     * @Shard\Unserializer\Ignore
-     */
-    protected $createdOn;
-
-    /**
-     *
      * @ODM\Date
      * @Shard\Unserializer\Ignore
      */
     protected $lastModified;
 
     /**
-     *
      * @ODM\Int
      */
     protected $sortBy = 1;
 
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = mb_convert_encoding($name, 'UTF-8');
     }
 
     /**
-     *
      * @return ThemeInterface|AssetInterface
      */
     public function getParent()
@@ -146,7 +142,6 @@ abstract class AbstractAsset
     }
 
     /**
-     *
      * @param ThemeInterface|AssetInterface $parent
      */
     public function setParent($parent)

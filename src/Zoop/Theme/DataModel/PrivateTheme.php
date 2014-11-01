@@ -21,21 +21,18 @@ class PrivateTheme extends AbstractTheme implements
     use StoresTrait;
 
     /**
-     *
      * @ODM\Boolean
      * @Shard\Unserializer\Ignore
      */
     protected $writeable = true;
 
     /**
-     *
      * @ODM\Boolean
      * @Shard\Unserializer\Ignore
      */
     protected $deleteable = true;
 
     /**
-     *
      * @ODM\Boolean
      * @ODM\Index
      */

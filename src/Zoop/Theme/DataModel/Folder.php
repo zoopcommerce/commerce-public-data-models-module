@@ -40,7 +40,6 @@ class Folder extends AbstractAsset implements AssetInterface
     protected $assets = [];
 
     /**
-     *
      * @ODM\Int
      * @Shard\Unserializer\Ignore
      */

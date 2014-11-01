@@ -8,7 +8,6 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 abstract class AbstractContentAsset extends AbstractFileAsset
 {
     /**
-     *
      * @ODM\String
      */
     protected $content;
