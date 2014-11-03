@@ -27,6 +27,10 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  */
 abstract class AbstractGatewayConfig
 {
+    const TYPE_PAYPAL_EXPRESS = 'PayPal_Express';
+    const TYPE_STRIPE = 'Stripe';
+    const TYPE_PIN = 'Pin';
+    
     use CreatedOnTrait;
     use CreatedByTrait;
     use UpdatedOnTrait;
@@ -182,4 +186,6 @@ abstract class AbstractGatewayConfig
     {
         $this->isTestMode = $testMode;
     }
+    
+    abstract public function getType();
 }

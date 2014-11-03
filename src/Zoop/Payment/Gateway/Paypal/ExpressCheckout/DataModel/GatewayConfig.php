@@ -171,4 +171,12 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     {
         $this->borderColor = $borderColor;
     }
+    
+    /**
+     * @return string $type
+     */
+    public function getType()
+    {
+        return parent::TYPE_PAYPAL_EXPRESS;
+    }
 }

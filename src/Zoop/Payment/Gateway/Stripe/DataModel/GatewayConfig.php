@@ -28,4 +28,12 @@ class GatewayConfig extends AbstractGatewayConfig implements StripeGatewayConfig
     {
         $this->apiKey = $apiKey;
     }
+
+    /**
+     * @return string $type
+     */
+    public function getType()
+    {
+        return parent::TYPE_STRIPE;
+    }
 }
