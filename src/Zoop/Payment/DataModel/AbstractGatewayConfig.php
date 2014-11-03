@@ -21,9 +21,9 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @ODM\InheritanceType("SINGLE_COLLECTION")
  * @ODM\DiscriminatorField(fieldName="type")
  * @ODM\DiscriminatorMap({
- *     "Paypal\ExpressCheckout" = "Zoop\Payment\Gateway\Paypal\ExpressCheckout\DataModel\GatewayConfig",
- *     "Pin"                    = "Zoop\Payment\Gateway\Pin\DataModel\GatewayConfig",
- *     "Stripe"                 = "Zoop\Payment\Gateway\Stripe\DataModel\GatewayConfig"
+ *     "PayPal_Express" = "Zoop\Payment\Gateway\PayPal\ExpressCheckout\DataModel\GatewayConfig",
+ *     "Pin"            = "Zoop\Payment\Gateway\Pin\DataModel\GatewayConfig",
+ *     "Stripe"         = "Zoop\Payment\Gateway\Stripe\DataModel\GatewayConfig"
  * })
  */
 abstract class AbstractGatewayConfig
