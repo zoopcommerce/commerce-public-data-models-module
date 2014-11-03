@@ -15,7 +15,6 @@ use Zoop\Store\DataModel\StoreTrait;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
 
-
 /**
  * @ODM\Document(collection="PaymentGateway")
  * @ODM\InheritanceType("SINGLE_COLLECTION")
