@@ -28,4 +28,12 @@ class GatewayConfig extends AbstractGatewayConfig implements PinGatewayConfigInt
     {
         $this->secretKey = $secretKey;
     }
+
+    /**
+     * @return string $type
+     */
+    public function getType()
+    {
+        return parent::TYPE_PIN;
+    }
 }
