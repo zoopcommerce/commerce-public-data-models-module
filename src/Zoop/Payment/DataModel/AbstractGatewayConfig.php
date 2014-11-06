@@ -67,12 +67,6 @@ abstract class AbstractGatewayConfig
      */
     protected $currency;
 
-    /**
-     *
-     * @ODM\Boolean
-     */
-    protected $isTestMode = false;
-
     public function __construct()
     {
         $this->countries = [];

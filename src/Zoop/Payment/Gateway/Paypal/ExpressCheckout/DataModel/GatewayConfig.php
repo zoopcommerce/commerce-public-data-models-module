@@ -7,6 +7,7 @@ use Zoop\Payment\DataModel\UsernameTrait;
 use Zoop\Payment\DataModel\PasswordTrait;
 use Zoop\Payment\DataModel\SignatureTrait;
 use Zoop\Payment\DataModel\PayPalGatewayConfigInterface;
+use Zoop\Payment\DataModel\OmnipayTrait;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -21,6 +22,8 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     use PasswordTrait;
 
     use SignatureTrait;
+    
+    use OmnipayTrait;
 
     /**
      * @ODM\Collection
