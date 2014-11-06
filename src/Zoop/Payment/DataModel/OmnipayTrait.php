@@ -11,21 +11,21 @@ trait OmnipayTrait
      *
      * @ODM\Boolean
      */
-    protected $isTestMode = false;
+    protected $testMode = false;
     
     /**
      * @return boolean
      */
     public function isTestMode()
     {
-        return $this->isTestMode;
+        return $this->testMode;
     }
     
     /**
-     * @param boolean $isTestMode
+     * @param boolean $testMode
      */
     public function setTestMode($testMode)
     {
-        $this->isTestMode = $testMode;
+        $this->testMode = $testMode;
     }
 }
