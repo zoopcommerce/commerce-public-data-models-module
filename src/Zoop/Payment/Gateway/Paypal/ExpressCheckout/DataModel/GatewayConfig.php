@@ -26,12 +26,12 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     use OmnipayTrait;
 
     /**
-     * @ODM\Collection
+     * @ODM\String
      */
     protected $solutionType;
 
     /**
-     * @ODM\Collection
+     * @ODM\String
      */
     protected $landingPage;
 
@@ -55,14 +55,6 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
      */
     protected $borderColor;
 
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->solutionType = [];
-        $this->landingPage  = [];
-    }
-
     /**
      * @return string
      */
@@ -72,19 +64,11 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     }
 
     /**
-     * @param array $solutionType
-     */
-    public function setSolutionType(array $solutionType)
-    {
-        $this->solutionType = $solutionType;
-    }
-
-    /**
      * @param string $solutionType
      */
-    public function addSolutionType($solutionType)
+    public function setSolutionType($solutionType)
     {
-        $this->solutionType[] = $solutionType;
+        $this->solutionType = $solutionType;
     }
 
     /**
@@ -96,19 +80,11 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     }
 
     /**
-     * @param array $landingPage
-     */
-    public function setLandingPage(array $landingPage)
-    {
-        $this->landingPage = $landingPage;
-    }
-
-    /**
      * @param string $landingPage
      */
-    public function addLandingPage($landingPage)
+    public function setLandingPage($landingPage)
     {
-        $this->landingPage[] = $landingPage;
+        $this->landingPage = $landingPage;
     }
 
     /**

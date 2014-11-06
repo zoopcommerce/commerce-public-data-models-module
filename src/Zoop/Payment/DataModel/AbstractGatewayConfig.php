@@ -165,21 +165,5 @@ abstract class AbstractGatewayConfig
         $this->currency = $currency;
     }
 
-    /**
-     * @return boolean
-     */
-    public function isTestMode()
-    {
-        return $this->isTestMode;
-    }
-
-    /**
-     * @param boolean $isTestMode
-     */
-    public function setTestMode($testMode)
-    {
-        $this->isTestMode = $testMode;
-    }
-    
     abstract public function getType();
 }
