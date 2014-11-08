@@ -12,7 +12,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *     @Shard\Permission\Basic(roles="*", allow="*")
  * })
  */
-class Image extends AbstractFileAsset implements AssetInterface
+class Image extends AbstractFileAsset implements ImageAssetInterface
 {
     /**
      * @ODM\String
@@ -101,21 +101,5 @@ class Image extends AbstractFileAsset implements AssetInterface
     public function setExtension($extension)
     {
         $this->extension = $extension;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMime()
-    {
-        return $this->mime;
-    }
-
-    /**
-     * @param string $mime
-     */
-    public function setMime($mime)
-    {
-        $this->mime = $mime;
     }
 }
