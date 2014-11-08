@@ -11,6 +11,9 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  */
 trait SignatureTrait
 {
+    /**
+     * @ODM\String
+     */
     protected $signature;
 
     /**

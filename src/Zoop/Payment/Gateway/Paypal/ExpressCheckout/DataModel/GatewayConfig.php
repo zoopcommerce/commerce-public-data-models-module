@@ -1,12 +1,13 @@
 <?php
 
-namespace Zoop\Payment\Gateway\Paypal\ExpressCheckout\DataModel;
+namespace Zoop\Payment\Gateway\PayPal\ExpressCheckout\DataModel;
 
 use Zoop\Payment\DataModel\AbstractGatewayConfig;
 use Zoop\Payment\DataModel\UsernameTrait;
 use Zoop\Payment\DataModel\PasswordTrait;
 use Zoop\Payment\DataModel\SignatureTrait;
-use Zoop\Payment\DataModel\PaypalGatewayConfigInterface;
+use Zoop\Payment\DataModel\PayPalGatewayConfigInterface;
+use Zoop\Payment\DataModel\OmnipayTrait;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -21,14 +22,16 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     use PasswordTrait;
 
     use SignatureTrait;
+    
+    use OmnipayTrait;
 
     /**
-     * @ODM\Collection
+     * @ODM\String
      */
     protected $solutionType;
 
     /**
-     * @ODM\Collection
+     * @ODM\String
      */
     protected $landingPage;
 
@@ -52,14 +55,6 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
      */
     protected $borderColor;
 
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->solutionType = [];
-        $this->landingPage  = [];
-    }
-
     /**
      * @return string
      */
@@ -69,19 +64,11 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     }
 
     /**
-     * @param array $solutionType
-     */
-    public function setSolutionType(array $solutionType)
-    {
-        $this->solutionType = $solutionType;
-    }
-
-    /**
      * @param string $solutionType
      */
-    public function addSolutionType($solutionType)
+    public function setSolutionType($solutionType)
     {
-        $this->solutionType[] = $solutionType;
+        $this->solutionType = $solutionType;
     }
 
     /**
@@ -93,19 +80,11 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     }
 
     /**
-     * @param array $landingPage
-     */
-    public function setLandingPage(array $landingPage)
-    {
-        $this->landingPage = $landingPage;
-    }
-
-    /**
      * @param string $landingPage
      */
-    public function addLandingPage($landingPage)
+    public function setLandingPage($landingPage)
     {
-        $this->landingPage[] = $landingPage;
+        $this->landingPage = $landingPage;
     }
 
     /**
@@ -170,5 +149,13 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     public function setBorderColor($borderColor)
     {
         $this->borderColor = $borderColor;
+    }
+    
+    /**
+     * @return string $type
+     */
+    public function getType()
+    {
+        return parent::TYPE_PAYPAL_EXPRESS;
     }
 }

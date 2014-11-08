@@ -20,13 +20,17 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @ODM\InheritanceType("SINGLE_COLLECTION")
  * @ODM\DiscriminatorField(fieldName="type")
  * @ODM\DiscriminatorMap({
- *     "Paypal\ExpressCheckout" = "Zoop\Payment\Gateway\Paypal\ExpressCheckout\DataModel\GatewayConfig",
- *     "Pin"                    = "Zoop\Payment\Gateway\Pin\DataModel\GatewayConfig",
- *     "Stripe"                 = "Zoop\Payment\Gateway\Stripe\DataModel\GatewayConfig"
+ *     "PayPal_Express" = "Zoop\Payment\Gateway\PayPal\ExpressCheckout\DataModel\GatewayConfig",
+ *     "Pin"            = "Zoop\Payment\Gateway\Pin\DataModel\GatewayConfig",
+ *     "Stripe"         = "Zoop\Payment\Gateway\Stripe\DataModel\GatewayConfig"
  * })
  */
 abstract class AbstractGatewayConfig
 {
+    const TYPE_PAYPAL_EXPRESS = 'PayPal_Express';
+    const TYPE_STRIPE = 'Stripe';
+    const TYPE_PIN = 'Pin';
+    
     use CreatedOnTrait;
     use CreatedByTrait;
     use UpdatedOnTrait;
@@ -62,12 +66,6 @@ abstract class AbstractGatewayConfig
      * @ODM\String
      */
     protected $currency;
-
-    /**
-     *
-     * @ODM\Boolean
-     */
-    protected $isTestMode = false;
 
     public function __construct()
     {
@@ -167,19 +165,5 @@ abstract class AbstractGatewayConfig
         $this->currency = $currency;
     }
 
-    /**
-     * @return boolean
-     */
-    public function isTestMode()
-    {
-        return $this->isTestMode;
-    }
-
-    /**
-     * @param boolean $isTestMode
-     */
-    public function setTestMode($testMode)
-    {
-        $this->isTestMode = $testMode;
-    }
+    abstract public function getType();
 }

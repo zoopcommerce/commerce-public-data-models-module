@@ -208,8 +208,14 @@ class Order implements OrderInterface, StoreTraitInterface
      *
      * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Address")
      */
-    protected $address;
+    protected $customerAddress;
 
+    /**
+     *
+     * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Address")
+     */
+    protected $shippingAddress;
+    
     /**
      *
      * @ODM\String
@@ -465,20 +471,38 @@ class Order implements OrderInterface, StoreTraitInterface
      *
      * @return AddressInterface
      */
-    public function getAddress()
+    public function getCustomerAddress()
     {
-        return $this->address;
+        return $this->customerAddress;
     }
 
     /**
      *
-     * @param AddressInterface $address
+     * @param AddressInterface $customerAddress
      */
-    public function setAddress(AddressInterface $address)
+    public function setCustomerAddress(AddressInterface $customerAddress)
     {
-        $this->address = $address;
+        $this->customerAddress = $customerAddress;
     }
 
+    /**
+     *
+     * @return AddressInterface
+     */
+    public function getShippingAddress()
+    {
+        return $this->shippingAddress;
+    }
+    
+    /**
+     *
+     * @param AddressInterface $shippingAddress
+     */
+    public function setShippingAddress(AddressInterface $shippingAddress)
+    {
+        $this->shippingAddress = $shippingAddress;
+    }
+    
     /**
      *
      * @return string
