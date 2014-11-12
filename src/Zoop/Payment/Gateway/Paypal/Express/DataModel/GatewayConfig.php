@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Payment\Gateway\PayPal\ExpressCheckout\DataModel;
+namespace Zoop\Payment\Gateway\PayPal\Express\DataModel;
 
 use Zoop\Payment\DataModel\AbstractGatewayConfig;
 use Zoop\Payment\DataModel\UsernameTrait;
