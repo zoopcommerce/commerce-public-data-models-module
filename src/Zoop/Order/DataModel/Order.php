@@ -174,6 +174,19 @@ class Order implements OrderInterface, StoreTraitInterface
      * @ODM\EmbedMany(targetDocument="Zoop\Order\DataModel\History")
      */
     protected $history;
+    
+    /**
+     *
+     * @ODM\EmbedMany(
+     *     discriminatorField="type",
+     *     discriminatorMap={
+     *         "Pin"            = "Zoop\Payment\Gateway\Pin\DataModel\Transaction",
+     *         "Stripe"         = "Zoop\Payment\Gateway\Stripe\DataModel\Transaction",
+     *         "PayPal_Express" = "Zoop\Payment\Gateway\PayPal\Express\DataModel\Transaction",
+     *     }
+     * )
+     */
+    protected $transactions;
 
     /**
      * @ODM\EmbedOne(targetDocument="Zoop\Order\DataModel\Commission")
