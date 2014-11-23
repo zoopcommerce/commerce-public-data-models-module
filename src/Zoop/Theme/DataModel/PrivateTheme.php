@@ -4,6 +4,7 @@ namespace Zoop\Theme\DataModel;
 
 use Zoop\Store\DataModel\StoresTraitInterface;
 use Zoop\Store\DataModel\StoresTrait;
+use Zoop\Theme\DataModel\PrivateThemeInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -16,7 +17,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  */
 class PrivateTheme extends AbstractTheme implements
     StoresTraitInterface,
-    ThemeInterface
+    PrivateThemeInterface
 {
     use StoresTrait;
 
