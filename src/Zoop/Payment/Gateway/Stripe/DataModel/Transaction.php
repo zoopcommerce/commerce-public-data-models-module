@@ -20,7 +20,7 @@ class Transaction extends AbstractTransaction
      * @ODM\String
      */
     protected $id;
-    
+
     /**
      * @return string $id
      */

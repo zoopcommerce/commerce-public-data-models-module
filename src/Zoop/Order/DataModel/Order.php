@@ -174,7 +174,7 @@ class Order implements OrderInterface, StoreTraitInterface
      * @ODM\EmbedMany(targetDocument="Zoop\Order\DataModel\History")
      */
     protected $history;
-    
+
     /**
      *
      * @ODM\EmbedMany(
@@ -228,7 +228,7 @@ class Order implements OrderInterface, StoreTraitInterface
      * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Address")
      */
     protected $shippingAddress;
-    
+
     /**
      *
      * @ODM\String
@@ -506,7 +506,7 @@ class Order implements OrderInterface, StoreTraitInterface
     {
         return $this->shippingAddress;
     }
-    
+
     /**
      *
      * @param AddressInterface $shippingAddress
@@ -515,7 +515,7 @@ class Order implements OrderInterface, StoreTraitInterface
     {
         $this->shippingAddress = $shippingAddress;
     }
-    
+
     /**
      *
      * @return string

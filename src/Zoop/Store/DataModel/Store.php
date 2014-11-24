@@ -124,7 +124,7 @@ class Store implements StoreInterface
      * @ODM\Index(unique = true, sparse = true)
      */
     protected $primaryDomain;
-    
+
     /**
      * @ODM\String
      */
@@ -245,7 +245,7 @@ class Store implements StoreInterface
     {
         return $this->checkoutDomain;
     }
-    
+
     /**
      * @param string $checkoutDomain
      */
@@ -253,7 +253,7 @@ class Store implements StoreInterface
     {
         $this->checkoutDomain = $checkoutDomain;
     }
-    
+
     /**
      * @return string
      */

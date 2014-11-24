@@ -15,7 +15,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 class GatewayConfig extends AbstractGatewayConfig implements StripeGatewayConfigInterface
 {
     use OmnipayTrait;
-    
+
     /**
      *
      * @ODM\String

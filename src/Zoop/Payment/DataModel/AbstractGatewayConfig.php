@@ -30,7 +30,7 @@ abstract class AbstractGatewayConfig
     const TYPE_PAYPAL_EXPRESS = 'PayPal_Express';
     const TYPE_STRIPE = 'Stripe';
     const TYPE_PIN = 'Pin';
-    
+
     use CreatedOnTrait;
     use CreatedByTrait;
     use UpdatedOnTrait;

@@ -43,31 +43,31 @@ abstract class AbstractTransaction implements TransactionInterface
      * @ODM\String
      */
     protected $currency;
-    
+
     /**
      *
      * @ODM\Boolean
      */
     protected $isSuccess = false;
-    
+
     /**
      *
      * @ODM\String
      */
     protected $description;
-    
+
     /**
      *
      * @ODM\String
      */
     protected $errorMessage;
-    
+
     /**
      *
      * @ODM\String
      */
     protected $errorCode;
-    
+
     /**
      *
      * @return boolean
@@ -169,7 +169,7 @@ abstract class AbstractTransaction implements TransactionInterface
     {
         $this->currency = $currency;
     }
-    
+
     /**
      * @param boolean $isSuccess
      */
@@ -185,7 +185,7 @@ abstract class AbstractTransaction implements TransactionInterface
     {
         $this->description = $description;
     }
-    
+
     /**
      * @param string $errorMessage
      */
@@ -193,7 +193,7 @@ abstract class AbstractTransaction implements TransactionInterface
     {
         $this->errorMessage = $errorMessage;
     }
-    
+
     /**
      * @param string $errorCode
      */

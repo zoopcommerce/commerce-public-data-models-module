@@ -20,7 +20,7 @@ class Transaction extends AbstractTransaction
      * @ODM\String
      */
     protected $token;
-    
+
     /**
      * @return string $token
      */

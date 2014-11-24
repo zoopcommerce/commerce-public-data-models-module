@@ -12,7 +12,7 @@ trait OmnipayTrait
      * @ODM\Boolean
      */
     protected $testMode = false;
-    
+
     /**
      * @return boolean
      */
@@ -20,7 +20,7 @@ trait OmnipayTrait
     {
         return $this->testMode;
     }
-    
+
     /**
      * @param boolean $testMode
      */
