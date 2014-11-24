@@ -1,19 +1,18 @@
 <?php
 
-namespace Zoop\Theme\DataModel;
+namespace Zoop\Payment\Gateway\Paypal\Express\DataModel;
 
-use Zoop\Theme\DataModel\SharedThemeInterface;
+use Zoop\Payment\DataModel\AbstractTransaction;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
 
 /**
- * @ODM\Document
+ * @ODM\EmbeddedDocument
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles="*", allow="*")
  * })
  */
-class SharedTheme extends AbstractTheme implements SharedThemeInterface
+class Transaction extends AbstractTransaction
 {
-
 }

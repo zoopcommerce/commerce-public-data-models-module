@@ -30,7 +30,7 @@ class GzippedCss extends AbstractFileAsset implements FileAssetInterface
 
     /**
      * @return string
-     * 
+     *
      */
     public function getHref()
     {

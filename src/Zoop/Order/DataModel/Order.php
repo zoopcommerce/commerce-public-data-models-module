@@ -176,6 +176,19 @@ class Order implements OrderInterface, StoreTraitInterface
     protected $history;
 
     /**
+     *
+     * @ODM\EmbedMany(
+     *     discriminatorField="type",
+     *     discriminatorMap={
+     *         "Pin"            = "Zoop\Payment\Gateway\Pin\DataModel\Transaction",
+     *         "Stripe"         = "Zoop\Payment\Gateway\Stripe\DataModel\Transaction",
+     *         "PayPal_Express" = "Zoop\Payment\Gateway\PayPal\Express\DataModel\Transaction",
+     *     }
+     * )
+     */
+    protected $transactions;
+
+    /**
      * @ODM\EmbedOne(targetDocument="Zoop\Order\DataModel\Commission")
      */
     protected $commission;
@@ -215,7 +228,7 @@ class Order implements OrderInterface, StoreTraitInterface
      * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Address")
      */
     protected $shippingAddress;
-    
+
     /**
      *
      * @ODM\String
@@ -493,7 +506,7 @@ class Order implements OrderInterface, StoreTraitInterface
     {
         return $this->shippingAddress;
     }
-    
+
     /**
      *
      * @param AddressInterface $shippingAddress
@@ -502,7 +515,7 @@ class Order implements OrderInterface, StoreTraitInterface
     {
         $this->shippingAddress = $shippingAddress;
     }
-    
+
     /**
      *
      * @return string

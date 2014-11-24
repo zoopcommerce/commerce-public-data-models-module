@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Payment\Gateway\PayPal\ExpressCheckout\DataModel;
+namespace Zoop\Payment\Gateway\Paypal\Express\DataModel;
 
 use Zoop\Payment\DataModel\AbstractGatewayConfig;
 use Zoop\Payment\DataModel\UsernameTrait;
@@ -22,7 +22,7 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     use PasswordTrait;
 
     use SignatureTrait;
-    
+
     use OmnipayTrait;
 
     /**
@@ -150,7 +150,7 @@ class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfig
     {
         $this->borderColor = $borderColor;
     }
-    
+
     /**
      * @return string $type
      */

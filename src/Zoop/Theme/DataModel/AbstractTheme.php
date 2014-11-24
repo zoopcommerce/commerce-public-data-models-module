@@ -33,7 +33,7 @@ abstract class AbstractTheme
     use SoftDeleteableTrait;
     use UpdatedOnTrait;
     use UpdatedByTrait;
-    
+
     /**
      * @ODM\Id
      */

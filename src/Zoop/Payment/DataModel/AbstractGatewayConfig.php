@@ -20,7 +20,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @ODM\InheritanceType("SINGLE_COLLECTION")
  * @ODM\DiscriminatorField(fieldName="type")
  * @ODM\DiscriminatorMap({
- *     "PayPal_Express" = "Zoop\Payment\Gateway\PayPal\ExpressCheckout\DataModel\GatewayConfig",
+ *     "PayPal_Express" = "Zoop\Payment\Gateway\PayPal\Express\DataModel\GatewayConfig",
  *     "Pin"            = "Zoop\Payment\Gateway\Pin\DataModel\GatewayConfig",
  *     "Stripe"         = "Zoop\Payment\Gateway\Stripe\DataModel\GatewayConfig"
  * })
@@ -30,7 +30,7 @@ abstract class AbstractGatewayConfig
     const TYPE_PAYPAL_EXPRESS = 'PayPal_Express';
     const TYPE_STRIPE = 'Stripe';
     const TYPE_PIN = 'Pin';
-    
+
     use CreatedOnTrait;
     use CreatedByTrait;
     use UpdatedOnTrait;
