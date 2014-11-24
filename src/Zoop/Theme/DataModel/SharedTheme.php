@@ -15,5 +15,5 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  */
 class SharedTheme extends AbstractTheme implements SharedThemeInterface
 {
-    
+
 }
