@@ -33,37 +33,28 @@ abstract class AbstractTheme
     use SoftDeleteableTrait;
     use UpdatedOnTrait;
     use UpdatedByTrait;
+    
     /**
      * @ODM\Id
      */
     protected $id;
 
     /**
-     *
      * @ODM\String
      */
     protected $name;
 
     /**
-     *
      * @ODM\Boolean
      * @Shard\Unserializer\Ignore
      */
     protected $writeable;
 
     /**
-     *
      * @ODM\Boolean
      * @Shard\Unserializer\Ignore
      */
     protected $deleteable;
-
-    /**
-     *
-     * @ODM\Date
-     * @Shard\Unserializer\Ignore
-     */
-    protected $createdOn;
 
     /**
      * @ODM\ReferenceMany(
@@ -90,7 +81,6 @@ abstract class AbstractTheme
     protected $assets;
 
     /**
-     *
      * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Image")
      */
     protected $screenshot;
@@ -184,7 +174,6 @@ abstract class AbstractTheme
     }
 
     /**
-     *
      * @return ImageInterface
      */
     public function getScreenshot()
@@ -193,7 +182,6 @@ abstract class AbstractTheme
     }
 
     /**
-     *
      * @param ImageInterface $screenshot
      */
     public function setScreenshot(ImageInterface $screenshot)

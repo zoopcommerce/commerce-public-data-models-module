@@ -3,6 +3,7 @@
 namespace Zoop\Theme\DataModel;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Zoop\Theme\DataModel\FolderAssetInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -13,7 +14,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *     @Shard\Permission\Basic(roles="*", allow="*")
  * })
  */
-class Folder extends AbstractAsset implements AssetInterface
+class Folder extends AbstractAsset implements FolderAssetInterface
 {
     /**
      * @ODM\ReferenceMany(
@@ -40,7 +41,6 @@ class Folder extends AbstractAsset implements AssetInterface
     protected $assets = [];
 
     /**
-     *
      * @ODM\Int
      * @Shard\Unserializer\Ignore
      */

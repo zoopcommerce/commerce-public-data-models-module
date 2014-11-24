@@ -12,40 +12,34 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *     @Shard\Permission\Basic(roles="*", allow="*")
  * })
  */
-class Image extends AbstractFileAsset implements AssetInterface
+class Image extends AbstractFileAsset implements ImageAssetInterface
 {
     /**
-     *
      * @ODM\String
      */
     protected $src;
 
     /**
-     *
      * @ODM\Int
      */
     protected $height;
 
     /**
-     *
      * @ODM\Int
      */
     protected $width;
 
     /**
-     *
      * @ODM\String
      */
     protected $extension;
 
     /**
-     *
      * @ODM\String
      */
     protected $mime;
 
     /**
-     *
      * @return string
      */
     public function getSrc()
@@ -54,7 +48,6 @@ class Image extends AbstractFileAsset implements AssetInterface
     }
 
     /**
-     *
      * @param string $src
      */
     public function setSrc($src)
@@ -63,7 +56,6 @@ class Image extends AbstractFileAsset implements AssetInterface
     }
 
     /**
-     *
      * @return integer
      */
     public function getHeight()
@@ -72,7 +64,6 @@ class Image extends AbstractFileAsset implements AssetInterface
     }
 
     /**
-     *
      * @param integer $height
      */
     public function setHeight($height)
@@ -81,7 +72,6 @@ class Image extends AbstractFileAsset implements AssetInterface
     }
 
     /**
-     *
      * @return integer
      */
     public function getWidth()
@@ -90,7 +80,6 @@ class Image extends AbstractFileAsset implements AssetInterface
     }
 
     /**
-     *
      * @param integer $width
      */
     public function setWidth($width)
@@ -99,7 +88,6 @@ class Image extends AbstractFileAsset implements AssetInterface
     }
 
     /**
-     *
      * @return string
      */
     public function getExtension()
@@ -108,29 +96,10 @@ class Image extends AbstractFileAsset implements AssetInterface
     }
 
     /**
-     *
      * @param string $extension
      */
     public function setExtension($extension)
     {
         $this->extension = $extension;
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function getMime()
-    {
-        return $this->mime;
-    }
-
-    /**
-     *
-     * @param string $mime
-     */
-    public function setMime($mime)
-    {
-        $this->mime = $mime;
     }
 }

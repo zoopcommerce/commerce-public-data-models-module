@@ -9,7 +9,6 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 abstract class AbstractFileAsset extends AbstractAsset
 {
     /**
-     *
      * @ODM\String
      */
     protected $mime;
