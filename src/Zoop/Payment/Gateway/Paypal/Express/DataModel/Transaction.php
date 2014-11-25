@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Payment\Gateway\Paypal\Express\DataModel;
+namespace Zoop\Payment\Gateway\PayPal\Express\DataModel;
 
 use Zoop\Payment\DataModel\AbstractTransaction;
 //Annotation imports
