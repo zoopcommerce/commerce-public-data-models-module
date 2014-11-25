@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoop\Payment\Gateway\Paypal\Express\DataModel;
+namespace Zoop\Payment\Gateway\PayPal\Express\DataModel;
 
 use Zoop\Payment\DataModel\AbstractGatewayConfig;
 use Zoop\Payment\DataModel\UsernameTrait;
@@ -18,11 +18,8 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 class GatewayConfig extends AbstractGatewayConfig implements PaypalGatewayConfigInterface
 {
     use UsernameTrait;
-
     use PasswordTrait;
-
     use SignatureTrait;
-
     use OmnipayTrait;
 
     /**
