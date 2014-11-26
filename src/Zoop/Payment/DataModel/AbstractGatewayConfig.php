@@ -24,6 +24,18 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *     "Pin"            = "Zoop\Payment\Gateway\Pin\DataModel\GatewayConfig",
  *     "Stripe"         = "Zoop\Payment\Gateway\Stripe\DataModel\GatewayConfig"
  * })
+ * @Shard\AccessControl({
+ *     @Shard\Permission\Basic(roles="*", allow={"read", "create", "update::*"}),
+ *     @Shard\Permission\Basic(
+ *          roles={
+ *              "zoop::admin",
+ *              "partner::admin",
+ *              "company::admin",
+ *              "store::admin"
+ *          },
+ *          allow="delete"
+ *     ),
+ * });
  */
 abstract class AbstractGatewayConfig
 {
