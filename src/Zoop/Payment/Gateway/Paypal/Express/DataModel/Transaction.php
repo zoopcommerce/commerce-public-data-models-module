@@ -22,6 +22,12 @@ class Transaction extends AbstractTransaction
     protected $token;
     
     /**
+     *
+     * @ODM\String
+     */
+    protected $id;
+    
+    /**
      * @return string $token
      */
     public function getToken()
@@ -35,5 +41,21 @@ class Transaction extends AbstractTransaction
     public function setToken($token)
     {
         $this->token = $token;
+    }
+    
+    /**
+     * @return string $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }
