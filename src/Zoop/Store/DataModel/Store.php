@@ -168,6 +168,16 @@ class Store implements StoreInterface
      * @ODM\Boolean
      */
     protected $isMaintenanceMode = false;
+
+    /**
+     * @ODM\Boolean
+     */
+    protected $isActive = true;
+
+    /**
+     * @ODM\Boolean
+     */
+    protected $canDisplay = true;
     protected $url;
     protected $checkoutUrl;
 
@@ -666,5 +676,37 @@ class Store implements StoreInterface
     public function setCheckoutUrl($checkoutUrl)
     {
         $this->checkoutUrl = $checkoutUrl;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = (boolean) $isActive;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function canDisplay()
+    {
+        return $this->canDisplay;
+    }
+
+    /**
+     * @param boolean $canDisplay
+     */
+    public function setCanDisplay($canDisplay)
+    {
+        $this->canDisplay = (boolean) $canDisplay;
     }
 }
