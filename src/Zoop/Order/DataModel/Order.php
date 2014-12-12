@@ -180,9 +180,15 @@ class Order implements OrderInterface, StoreTraitInterface
      * @ODM\EmbedMany(
      *     discriminatorField="type",
      *     discriminatorMap={
-     *         "Pin"            = "Zoop\Payment\Gateway\Pin\DataModel\Transaction",
-     *         "Stripe"         = "Zoop\Payment\Gateway\Stripe\DataModel\Transaction",
-     *         "PayPal_Express" = "Zoop\Payment\Gateway\PayPal\Express\DataModel\Transaction",
+     *         "Charge_Pin"  = "Zoop\Payment\Gateway\Pin\DataModel\Transaction",
+     *         "Capture_Pin" = "Zoop\Payment\Capture\Pin\DataModel\Transaction",
+     *         "Refund_Pin"  = "Zoop\Payment\Refund\Pin\DataModel\Transaction",
+     *         "Charge_Stripe"  = "Zoop\Payment\Gateway\Stripe\DataModel\Transaction",
+     *         "Capture_Stripe" = "Zoop\Payment\Capture\Stripe\DataModel\Transaction",
+     *         "Refund_Stripe"  = "Zoop\Payment\Refund\Stripe\DataModel\Transaction",
+     *         "Charge_PayPal_Express"  = "Zoop\Payment\Gateway\PayPal\Express\DataModel\Transaction",
+     *         "Capture_PayPal_Express" = "Zoop\Payment\Capture\PayPal\Express\DataModel\Transaction",
+     *         "Refund_PayPal_Express"  = "Zoop\Payment\Refund\PayPal\Express\DataModel\Transaction"
      *     }
      * )
      */
