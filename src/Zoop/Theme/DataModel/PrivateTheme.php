@@ -2,8 +2,6 @@
 
 namespace Zoop\Theme\DataModel;
 
-use Zoop\Store\DataModel\StoresTraitInterface;
-use Zoop\Store\DataModel\StoresTrait;
 use Zoop\Theme\DataModel\PrivateThemeInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -12,15 +10,12 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 /**
  * @ODM\Document
  * @Shard\AccessControl({
- *     @Shard\Permission\Basic(roles="*", allow="*")
+ *     @Shard\Permission\Basic(roles="sys::theme", allow="read"),
+ *     @Shard\Permission\Basic(roles={"zoop::admin", "partner::admin", "company::admin", "store::admin", "owner"}, allow="*")
  * })
  */
-class PrivateTheme extends AbstractTheme implements
-    StoresTraitInterface,
-    PrivateThemeInterface
+class PrivateTheme extends AbstractTheme implements PrivateThemeInterface
 {
-    use StoresTrait;
-
     /**
      * @ODM\Boolean
      * @Shard\Unserializer\Ignore
