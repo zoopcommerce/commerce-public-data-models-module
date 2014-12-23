@@ -32,7 +32,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @ODM\InheritanceType("SINGLE_COLLECTION")
  * @ODM\DiscriminatorField(fieldName="type")
  * @ODM\DiscriminatorMap({
- *     "company::admin" = "Zoop\User\DataModel\Company\Admin",
+ *     "customer::admin" = "Zoop\User\DataModel\Customer\Admin",
  *     "comsumer" = "Zoop\User\DataModel\Customer",
  *     "guest" = "Zoop\User\DataModel\Guest",
  *     "partner::admin" = "Zoop\User\DataModel\Partner\Admin",
@@ -47,7 +47,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *              "sys::auth-user",
  *              "owner",
  *              "partner::admin",
- *              "company::admin",
+ *              "customer::admin",
  *              "store::admin"
  *          },
  *          allow="read"
