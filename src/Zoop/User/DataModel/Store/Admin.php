@@ -4,9 +4,9 @@ namespace Zoop\User\DataModel\Store;
 
 use Zoop\Common\User\PasswordInterface;
 use Zoop\Common\User\RoleAwareUserInterface;
-use Zoop\Common\User\StoreAdminInterface;
 use Zoop\Common\User\UserInterface;
 use Zoop\User\DataModel\AbstractUserFilter;
+use Zoop\User\DataModel\StoreAdminInterface;
 use Zoop\User\Roles;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
