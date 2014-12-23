@@ -16,17 +16,17 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 class Transaction extends AbstractTransaction
 {
     /**
-     * 
+     *
      * @ODM\String
      */
     protected $transactionReference;
-    
+
     /**
-     * 
+     *
      * @ODM\Float
      */
     protected $amount;
-    
+
     /**
      * @return the $transactionReference
      */

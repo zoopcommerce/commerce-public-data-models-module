@@ -20,13 +20,13 @@ class Transaction extends AbstractTransaction
      * @ODM\String
      */
     protected $token;
-    
+
     /**
      *
      * @ODM\String
      */
     protected $id;
-    
+
     /**
      * @return string $token
      */
@@ -34,7 +34,7 @@ class Transaction extends AbstractTransaction
     {
         return $this->token;
     }
-    
+
     /**
      * @param string $token
      */
@@ -42,7 +42,7 @@ class Transaction extends AbstractTransaction
     {
         $this->token = $token;
     }
-    
+
     /**
      * @return string $id
      */
@@ -50,7 +50,7 @@ class Transaction extends AbstractTransaction
     {
         return $this->id;
     }
-    
+
     /**
      * @param string $id
      */

@@ -10,13 +10,12 @@ use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
 use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
 use Zoop\Store\DataModel\StoresTrait;
-use Zoop\Store\DataModel\StoresTraitInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
 
 /**
- * @ODM\Document(collection="Theme")
+ * @ODM\Document(collection="Themes")
  * @ODM\InheritanceType("SINGLE_COLLECTION")
  * @ODM\DiscriminatorField("type")
  * @ODM\DiscriminatorMap({
@@ -26,10 +25,16 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * })
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles="sys::theme", allow="read"),
- *     @Shard\Permission\Basic(roles={"zoop::admin", "partner::admin", "company::admin", "store::admin", "owner"}, allow="*")
+ *     @Shard\Permission\Basic(roles={
+ *          "zoop::admin",
+ *          "partner::admin",
+ *          "company::admin",
+ *          "store::admin",
+ *          "owner"
+ *      }, allow="*")
  * })
  */
-abstract class AbstractTheme implements StoresTraitInterface
+abstract class AbstractTheme implements ThemeInterface
 {
     use CreatedOnTrait;
     use CreatedByTrait;

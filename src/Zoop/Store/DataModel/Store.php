@@ -2,14 +2,8 @@
 
 namespace Zoop\Store\DataModel;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Zoop\Common\DataModel\AddressInterface;
+use Zoop\Entity\DataModel\AbstractEntityFilter;
 use Zoop\Common\DataModel\CurrencyInterface;
-use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
-use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
-use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
-use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
-use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
 use Zoop\Store\DataModel\StoreInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -18,51 +12,21 @@ use Zoop\Shard\Annotation\Annotations as Shard;
 /**
  * @ODM\Document
  * @Shard\AccessControl({
- *     @Shard\Permission\Basic(roles="sys::store", allow="read"),
+ *     @Shard\Permission\Basic(roles={"sys::entity", "sys::store"}, allow="read"),
  *     @Shard\Permission\Basic(roles={"zoop::admin", "partner::admin", "company::admin"}, allow="*"),
  *     @Shard\Permission\Basic(roles="store::admin", allow={"read", "update::*"}, deny="delete"),
  *     @Shard\Permission\Basic(roles="owner", allow={"read", "update::*"})
  * })
  *
  * @SuppressWarnings(PHPMD.LongVariable)
- * @SuppressWarnings(PHPMD.ExcessivePublicCount)
- * @SuppressWarnings(PHPMD.TooManyFields)
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  *
  */
-class Store implements StoreInterface
+class Store extends AbstractEntityFilter implements StoreInterface
 {
-    use CreatedOnTrait;
-    use CreatedByTrait;
-    use SoftDeleteableTrait;
-    use UpdatedOnTrait;
-    use UpdatedByTrait;
-
-    /**
-     * @ODM\Id(
-     *     strategy="custom",
-     *     options={"class"="Zoop\Store\StoreSlugGenerator"}
-     * )
-     * @Shard\Zones
-     */
-    protected $slug;
-
-    /**
-     * @ODM\String
-     * @Shard\Validator\Required
-     */
-    protected $name;
-
     /**
      * @ODM\String
      */
     protected $businessName;
-
-    /**
-     * @ODM\String
-     * @Shard\Validator\Required
-     */
-    protected $email;
 
     /**
      * @ODM\String
@@ -72,68 +36,12 @@ class Store implements StoreInterface
     /**
      * @ODM\String
      */
-    protected $description;
-
-    /**
-     * @ODM\String
-     */
-    protected $authorizationCode;
-
-    /**
-     * @ODM\String
-     */
     protected $googleWebmasterToolsMetaContent;
 
     /**
      * @ODM\String
      */
-    protected $googleAnalyticsTrackingId;
-
-    /**
-     * @ODM\String
-     */
-    protected $facebook;
-
-    /**
-     * @ODM\String
-     */
-    protected $twitter;
-
-    /**
-     * @ODM\String
-     */
-    protected $youtube;
-
-    /**
-     * @ODM\String
-     */
-    protected $instagram;
-
-    /**
-     * @ODM\String
-     */
-    protected $googlePlus;
-
-    /**
-     * @ODM\String
-     */
-    protected $pinterest;
-
-    /**
-     * @ODM\String
-     * @ODM\Index(unique = true, sparse = true)
-     */
-    protected $primaryDomain;
-
-    /**
-     * @ODM\String
-     */
     protected $checkoutDomain;
-
-    /**
-     * @ODM\Collection
-     */
-    protected $domains;
 
     /**
      * @ODM\Int
@@ -147,38 +55,12 @@ class Store implements StoreInterface
      */
     protected $currencies;
 
-    /**
-     *
-     * @ODM\EmbedOne(targetDocument="Zoop\Common\DataModel\Address")
-     */
-    protected $address;
-
-    /**
-     * @ODM\String
-     */
-    protected $phoneNumber;
 
     /**
      *
      * @ODM\EmbedMany(targetDocument="Zoop\Store\DataModel\RegionalTaxationRule")
      */
     protected $regionalTaxationRules;
-
-    /**
-     * @ODM\Boolean
-     */
-    protected $isMaintenanceMode = false;
-
-    /**
-     * @ODM\Boolean
-     */
-    protected $isActive = true;
-
-    /**
-     * @ODM\Boolean
-     */
-    protected $canDisplay = true;
-    protected $url;
     protected $checkoutUrl;
 
     /**
@@ -188,64 +70,6 @@ class Store implements StoreInterface
     {
         $this->currencies = new ArrayCollection();
         $this->regionalTaxationRules = new ArrayCollection();
-    }
-
-    /**
-     * Alias for getSlug
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->getSlug();
-    }
-
-    /**
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPrimaryDomain()
-    {
-        return $this->primaryDomain;
-    }
-
-    /**
-     * @param string $domain
-     */
-    public function setPrimaryDomain($domain)
-    {
-        $this->primaryDomain = $domain;
     }
 
     /**
@@ -262,34 +86,6 @@ class Store implements StoreInterface
     public function setCheckoutDomain($checkoutDomain)
     {
         $this->checkoutDomain = $checkoutDomain;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDomain()
-    {
-        $primary = $this->getPrimaryDomain();
-        if (!empty($primary)) {
-            return $primary;
-        }
-        return $this->getDomains()[0];
-    }
-
-    /**
-     * @return array
-     */
-    public function getDomains()
-    {
-        return $this->domains;
-    }
-
-    /**
-     * @param array $domains
-     */
-    public function setDomains(array $domains)
-    {
-        $this->domains = $domains;
     }
 
     /**
@@ -340,40 +136,6 @@ class Store implements StoreInterface
     }
 
     /**
-     * @return AddressInterface
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     *
-     * @param AddressInterface $address
-     */
-    public function setAddress(AddressInterface $address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
-    }
-
-    /**
-     *
-     * @param string $phoneNumber
-     */
-    public function setPhoneNumber($phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-
-    /**
      * @return string
      */
     public function getBusinessName()
@@ -393,23 +155,6 @@ class Store implements StoreInterface
     /**
      * @return string
      */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     *
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string
-     */
     public function getSalesEmail()
     {
         return $this->salesEmail;
@@ -422,23 +167,6 @@ class Store implements StoreInterface
     public function setSalesEmail($salesEmail)
     {
         $this->salesEmail = $salesEmail;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     *
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
     }
 
     /**
@@ -478,193 +206,6 @@ class Store implements StoreInterface
     /**
      * @return string
      */
-    public function getFacebook()
-    {
-        return $this->facebook;
-    }
-
-    /**
-     *
-     * @param string $facebook
-     */
-    public function setFacebook($facebook)
-    {
-        $this->facebook = $facebook;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTwitter()
-    {
-        return $this->twitter;
-    }
-
-    /**
-     *
-     * @param string $twitter
-     */
-    public function setTwitter($twitter)
-    {
-        $this->twitter = $twitter;
-    }
-
-    /**
-     * @return string
-     */
-    public function getYoutube()
-    {
-        return $this->youtube;
-    }
-
-    /**
-     *
-     * @param string $youtube
-     */
-    public function setYoutube($youtube)
-    {
-        $this->youtube = $youtube;
-    }
-
-    /**
-     * @return string
-     */
-    public function getInstagram()
-    {
-        return $this->instagram;
-    }
-
-    /**
-     *
-     * @param string $instagram
-     */
-    public function setInstagram($instagram)
-    {
-        $this->instagram = $instagram;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGooglePlus()
-    {
-        return $this->googlePlus;
-    }
-
-    /**
-     *
-     * @param string $googlePlus
-     */
-    public function setGooglePlus($googlePlus)
-    {
-        $this->googlePlus = $googlePlus;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPinterest()
-    {
-        return $this->pinterest;
-    }
-
-    /**
-     *
-     * @param string $pinterest
-     */
-    public function setPinterest($pinterest)
-    {
-        $this->pinterest = $pinterest;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAuthorizationCode()
-    {
-        return $this->authorizationCode;
-    }
-
-    /**
-     *
-     * @param string $authorizationCode
-     */
-    public function setAuthorizationCode($authorizationCode)
-    {
-        $this->authorizationCode = $authorizationCode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGoogleWebmasterToolsMetaContent()
-    {
-        return $this->googleWebmasterToolsMetaContent;
-    }
-
-    /**
-     *
-     * @param string $googleWebmasterToolsMetaContent
-     */
-    public function setGoogleWebmasterToolsMetaContent($googleWebmasterToolsMetaContent)
-    {
-        $this->googleWebmasterToolsMetaContent = $googleWebmasterToolsMetaContent;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGoogleAnalyticsTrackingId()
-    {
-        return $this->googleAnalyticsTrackingId;
-    }
-
-    /**
-     *
-     * @param string $googleAnalyticsTrackingId
-     */
-    public function setGoogleAnalyticsTrackingId($googleAnalyticsTrackingId)
-    {
-        $this->googleAnalyticsTrackingId = $googleAnalyticsTrackingId;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isMaintenanceMode()
-    {
-        return $this->isMaintenanceMode;
-    }
-
-    /**
-     *
-     * @param boolean $isMaintenanceMode
-     */
-    public function setIsMaintenanceMode($isMaintenanceMode)
-    {
-        $this->isMaintenanceMode = (boolean) $isMaintenanceMode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     *
-     * @param string $url
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    /**
-     * @return string
-     */
     public function getCheckoutUrl()
     {
         return $this->checkoutUrl;
@@ -676,37 +217,5 @@ class Store implements StoreInterface
     public function setCheckoutUrl($checkoutUrl)
     {
         $this->checkoutUrl = $checkoutUrl;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param boolean $isActive
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = (boolean) $isActive;
-    }
-    
-    /**
-     * @return boolean
-     */
-    public function canDisplay()
-    {
-        return $this->canDisplay;
-    }
-
-    /**
-     * @param boolean $canDisplay
-     */
-    public function setCanDisplay($canDisplay)
-    {
-        $this->canDisplay = (boolean) $canDisplay;
     }
 }

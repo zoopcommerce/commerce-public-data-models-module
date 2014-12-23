@@ -26,25 +26,25 @@ class Transaction extends AbstractTransaction
      * @ODM\String
      */
     protected $status;
-    
+
     /**
      *
      * @ODM\String
      */
     protected $pendingReason;
-    
+
     /**
-     * 
+     *
      * @ODM\String
      */
     protected $transactionReference;
-    
+
     /**
-     * 
+     *
      * @ODM\Float
      */
     protected $amount;
-    
+
     /**
      * @return the $transactionReference
      */
@@ -76,7 +76,7 @@ class Transaction extends AbstractTransaction
     {
         $this->amount = $amount;
     }
-    
+
     /**
      * @return the $id
      */

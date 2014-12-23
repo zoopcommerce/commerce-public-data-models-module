@@ -15,7 +15,6 @@ use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
-use Zoop\Store\DataModel\StoreTraitInterface;
 use Zoop\Store\DataModel\StoreTrait;
 use Zoop\Payment\DataModel\TransactionInterface;
 //Annotation imports
@@ -23,7 +22,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
 
 /**
- * @ODM\Document
+ * @ODM\Document(collection="Orders")
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles="*", allow={"read", "create", "update::*"}),
  *     @Shard\Permission\Basic(
@@ -88,7 +87,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
-class Order implements OrderInterface, StoreTraitInterface
+class Order implements OrderInterface
 {
     use CreatedOnTrait;
     use CreatedByTrait;
