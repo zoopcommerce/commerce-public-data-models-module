@@ -33,7 +33,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @ODM\DiscriminatorField(fieldName="type")
  * @ODM\DiscriminatorMap({
  *     "customer::admin" = "Zoop\User\DataModel\Customer\Admin",
- *     "comsumer" = "Zoop\User\DataModel\Customer",
+ *     "comsumer" = "Zoop\User\DataModel\Consumer",
  *     "guest" = "Zoop\User\DataModel\Guest",
  *     "partner::admin" = "Zoop\User\DataModel\Partner\Admin",
  *     "store::admin" = "Zoop\User\DataModel\Store\Admin",
