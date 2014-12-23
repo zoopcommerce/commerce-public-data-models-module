@@ -35,12 +35,12 @@ trait EntitiesTrait
     }
 
     /**
-     * @param string $store
+     * @param string $entity
      */
-    public function addEntity($store)
+    public function addEntity($entity)
     {
-        if (!empty($store) && in_array($store, $this->getEntities()) === false) {
-            $this->entities[] = $store;
+        if (!empty($entity) && in_array($entity, $this->getEntities()) === false) {
+            $this->entities[] = $entity;
         }
     }
 }
