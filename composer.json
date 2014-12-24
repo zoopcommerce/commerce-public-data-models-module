@@ -40,7 +40,8 @@
         "doctrine/mongodb-odm"                              : "dev-hotfix719 as 1.0.0-BETA9",
         "doctrine/orm"                                      : "2.4.0-RC2",
         "zoopcommerce/commerce-public-apis-module"          : "dev-master",
-        "zoopcommerce/shard-module"                         : "~4.0"
+        "zoopcommerce/shard-module"                         : "~4.0",
+        "zoopcommerce/maggott-module"                       : "dev-master#45bff381afda81c2e92855b5a4a739b627953673 as 1.1.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.4.*",
