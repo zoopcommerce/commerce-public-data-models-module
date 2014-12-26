@@ -20,7 +20,8 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @ODM\DiscriminatorMap({
  *     "Customer"  = "Zoop\Customer\DataModel\Customer",
  *     "Partner"   = "Zoop\Partner\DataModel\Partner",
- *     "Store"     = "Zoop\Store\DataModel\Store"
+ *     "Store"     = "Zoop\Store\DataModel\Store",
+ *     "System"     = "Zoop\Entity\DataModel\System"
  * })
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles="sys::entity", allow="read")
