@@ -14,7 +14,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @ODM\Document
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles="zoop::admin", allow="*"),
- *     @Shard\Permission\Basic(roles="partner::admin", allow={"read", "update::*"}, deny="delete"),
+ *     @Shard\Permission\Basic(roles="partner::admin", allow={"read", "update::*"}, deny={"delete", "update::softDeleted", "update::entities"}),
  *     @Shard\Permission\Basic(roles="company::admin", deny="*")
  * })
  */

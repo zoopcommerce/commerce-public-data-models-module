@@ -15,7 +15,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles="zoop::admin", allow="*"),
  *     @Shard\Permission\Basic(roles="partner::admin", allow="*"),
- *     @Shard\Permission\Basic(roles="company::admin", allow={"read", "update::*"}, deny="delete")
+ *     @Shard\Permission\Basic(roles="company::admin", allow={"read", "update::*"}, deny={"delete", "update::softDeleted", "update::entities"})
  * })
  */
 class Customer extends AbstractEntityFilter implements CustomerInterface

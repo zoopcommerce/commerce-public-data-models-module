@@ -5,6 +5,7 @@ namespace Zoop\Store\DataModel;
 use Zoop\Entity\DataModel\AbstractEntityFilter;
 use Zoop\Common\DataModel\CurrencyInterface;
 use Zoop\Store\DataModel\StoreInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -14,7 +15,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles={"sys::entity", "sys::store"}, allow="read"),
  *     @Shard\Permission\Basic(roles={"zoop::admin", "partner::admin", "company::admin"}, allow="*"),
- *     @Shard\Permission\Basic(roles="store::admin", allow={"read", "update::*"}, deny="delete"),
+ *     @Shard\Permission\Basic(roles="store::admin", allow={"read", "update::*"}, deny={"delete", "update::softDeleted", "update::entities"}),
  *     @Shard\Permission\Basic(roles="owner", allow={"read", "update::*"})
  * })
  *
@@ -62,15 +63,6 @@ class Store extends AbstractEntityFilter implements StoreInterface
      */
     protected $regionalTaxationRules;
     protected $checkoutUrl;
-
-    /**
-     *
-     */
-    public function __construct()
-    {
-        $this->currencies = new ArrayCollection();
-        $this->regionalTaxationRules = new ArrayCollection();
-    }
 
     /**
      * @return string
