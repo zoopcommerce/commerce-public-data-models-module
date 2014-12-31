@@ -2,10 +2,12 @@
 
 namespace Zoop\Store\DataModel;
 
-use Zoop\Entity\DataModel\AbstractEntityFilter;
-use Zoop\Common\DataModel\CurrencyInterface;
-use Zoop\Store\DataModel\StoreInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Zoop\Common\DataModel\CurrencyInterface;
+use Zoop\Customer\DataModel\CustomerInterface;
+use Zoop\Entity\DataModel\AbstractEntityFilter;
+use Zoop\Entity\DataModel\EntityInterface;
+use Zoop\Store\DataModel\StoreInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -23,7 +25,12 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *
  */
 class Store extends AbstractEntityFilter implements StoreInterface
-{
+{    
+    /**
+     * @ODM\ReferenceOne(targetDocument="Zoop\Customer\DataModel\Customer", simple=true)
+     */
+    protected $customer;
+    
     /**
      * @ODM\String
      */
@@ -63,6 +70,38 @@ class Store extends AbstractEntityFilter implements StoreInterface
      */
     protected $regionalTaxationRules;
     protected $checkoutUrl;
+    
+    /**
+     * @return EntityInterface
+     */
+    public function getParent()
+    {
+        return $this->getCustomer();
+    }
+    
+    /**
+     * @return EntityInterface
+     */
+    public function setParent(EntityInterface $parent)
+    {
+        $this->setCustomer($parent);
+    }
+    
+    /**
+     * @return CustomerInterface
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @return CustomerInterface
+     */
+    public function setCustomer(CustomerInterface $customer)
+    {
+        $this->customer = $customer;
+    }
 
     /**
      * @return string
