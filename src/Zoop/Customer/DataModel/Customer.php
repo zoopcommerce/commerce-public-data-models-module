@@ -17,7 +17,11 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles="zoop::admin", allow="*"),
  *     @Shard\Permission\Basic(roles="partner::admin", allow="*"),
- *     @Shard\Permission\Basic(roles="company::admin", allow={"read", "update::*"}, deny={"delete", "update::softDeleted", "update::entities"})
+ *     @Shard\Permission\Basic(
+ *          roles="company::admin",
+ *          allow={"read", "update::*"},
+ *          deny={"delete", "update::softDeleted", "update::entities"}
+ *     )
  * })
  */
 class Customer extends AbstractEntityFilter implements CustomerInterface
@@ -26,7 +30,7 @@ class Customer extends AbstractEntityFilter implements CustomerInterface
      * @ODM\ReferenceOne(targetDocument="Zoop\Partner\DataModel\Partner", simple=true)
      */
     protected $partner;
-    
+
     /**
      * @return EntityInterface
      */
@@ -34,7 +38,7 @@ class Customer extends AbstractEntityFilter implements CustomerInterface
     {
         return $this->getPartner();
     }
-    
+
     /**
      * @return EntityInterface
      */

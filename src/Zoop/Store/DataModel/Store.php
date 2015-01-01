@@ -17,7 +17,11 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles={"sys::entity", "sys::store"}, allow="read"),
  *     @Shard\Permission\Basic(roles={"zoop::admin", "partner::admin", "company::admin"}, allow="*"),
- *     @Shard\Permission\Basic(roles="store::admin", allow={"read", "update::*"}, deny={"delete", "update::softDeleted", "update::entities"}),
+ *     @Shard\Permission\Basic(
+ *          roles="store::admin",
+ *          allow={"read", "update::*"},
+ *          deny={"delete", "update::softDeleted", "update::entities"}
+ *     ),
  *     @Shard\Permission\Basic(roles="owner", allow={"read", "update::*"})
  * })
  *
@@ -25,12 +29,12 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *
  */
 class Store extends AbstractEntityFilter implements StoreInterface
-{    
+{
     /**
      * @ODM\ReferenceOne(targetDocument="Zoop\Customer\DataModel\Customer", simple=true)
      */
     protected $customer;
-    
+
     /**
      * @ODM\String
      */
@@ -70,7 +74,7 @@ class Store extends AbstractEntityFilter implements StoreInterface
      */
     protected $regionalTaxationRules;
     protected $checkoutUrl;
-    
+
     /**
      * @return EntityInterface
      */
@@ -78,7 +82,7 @@ class Store extends AbstractEntityFilter implements StoreInterface
     {
         return $this->getCustomer();
     }
-    
+
     /**
      * @return EntityInterface
      */
@@ -86,7 +90,7 @@ class Store extends AbstractEntityFilter implements StoreInterface
     {
         $this->setCustomer($parent);
     }
-    
+
     /**
      * @return CustomerInterface
      */
