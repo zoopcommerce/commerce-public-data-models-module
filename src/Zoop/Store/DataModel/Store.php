@@ -2,8 +2,11 @@
 
 namespace Zoop\Store\DataModel;
 
-use Zoop\Entity\DataModel\AbstractEntityFilter;
+use Doctrine\Common\Collections\ArrayCollection;
 use Zoop\Common\DataModel\CurrencyInterface;
+use Zoop\Customer\DataModel\CustomerInterface;
+use Zoop\Entity\DataModel\AbstractEntityFilter;
+use Zoop\Entity\DataModel\EntityInterface;
 use Zoop\Store\DataModel\StoreInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -14,7 +17,11 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  * @Shard\AccessControl({
  *     @Shard\Permission\Basic(roles={"sys::entity", "sys::store"}, allow="read"),
  *     @Shard\Permission\Basic(roles={"zoop::admin", "partner::admin", "company::admin"}, allow="*"),
- *     @Shard\Permission\Basic(roles="store::admin", allow={"read", "update::*"}, deny="delete"),
+ *     @Shard\Permission\Basic(
+ *          roles="store::admin",
+ *          allow={"read", "update::*"},
+ *          deny={"delete", "update::softDeleted", "update::entities"}
+ *     ),
  *     @Shard\Permission\Basic(roles="owner", allow={"read", "update::*"})
  * })
  *
@@ -23,6 +30,11 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  */
 class Store extends AbstractEntityFilter implements StoreInterface
 {
+    /**
+     * @ODM\ReferenceOne(targetDocument="Zoop\Customer\DataModel\Customer", simple=true)
+     */
+    protected $customer;
+
     /**
      * @ODM\String
      */
@@ -64,12 +76,35 @@ class Store extends AbstractEntityFilter implements StoreInterface
     protected $checkoutUrl;
 
     /**
-     *
+     * @return EntityInterface
      */
-    public function __construct()
+    public function getParent()
     {
-        $this->currencies = new ArrayCollection();
-        $this->regionalTaxationRules = new ArrayCollection();
+        return $this->getCustomer();
+    }
+
+    /**
+     * @return EntityInterface
+     */
+    public function setParent(EntityInterface $parent)
+    {
+        $this->setCustomer($parent);
+    }
+
+    /**
+     * @return CustomerInterface
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @return CustomerInterface
+     */
+    public function setCustomer(CustomerInterface $customer)
+    {
+        $this->customer = $customer;
     }
 
     /**

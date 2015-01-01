@@ -45,6 +45,7 @@ use Zoop\Shard\Annotation\Annotations as Shard;
  *          roles={
  *              "sys::authenticate",
  *              "sys::auth-user",
+ *              "sys::user",
  *              "owner",
  *              "partner::admin",
  *              "customer::admin",
