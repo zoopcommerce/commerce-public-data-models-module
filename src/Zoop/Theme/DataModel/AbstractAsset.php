@@ -2,12 +2,12 @@
 
 namespace Zoop\Theme\DataModel;
 
+use Zoop\Entity\DataModel\EntitiesTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
 use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
-use Zoop\Store\DataModel\StoresTrait;
 use Zoop\Theme\DataModel\AssetInterface;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -42,8 +42,8 @@ abstract class AbstractAsset implements AssetInterface
 {
     use CreatedOnTrait;
     use CreatedByTrait;
+    use EntitiesTrait;
     use SoftDeleteableTrait;
-    use StoresTrait;
     use UpdatedOnTrait;
     use UpdatedByTrait;
 

@@ -167,7 +167,7 @@ class Store extends AbstractEntityFilter implements StoreInterface
      */
     public function addCurrency(CurrencyInterface $currency)
     {
-        $this->currencies->add($currency);
+        $this->getCurrencies()->add($currency);
     }
 
     /**
@@ -235,7 +235,7 @@ class Store extends AbstractEntityFilter implements StoreInterface
      */
     public function addRegionalTaxationRule($countryCode, RegionalTaxationRuleInterface $regionTaxationRule)
     {
-        $this->regionalTaxationRules[$countryCode] = $regionTaxationRule;
+        $this->getRegionalTaxationRules()[$countryCode] = $regionTaxationRule;
     }
 
     /**

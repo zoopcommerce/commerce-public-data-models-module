@@ -4,12 +4,12 @@ namespace Zoop\Theme\DataModel;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Zoop\Common\File\DataModel\ImageInterface;
+use Zoop\Entity\DataModel\EntitiesTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
 use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
-use Zoop\Store\DataModel\StoresTrait;
 //Annotation imports
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Zoop\Shard\Annotation\Annotations as Shard;
@@ -38,8 +38,8 @@ abstract class AbstractTheme implements ThemeInterface
 {
     use CreatedOnTrait;
     use CreatedByTrait;
+    use EntitiesTrait;
     use SoftDeleteableTrait;
-    use StoresTrait;
     use UpdatedOnTrait;
     use UpdatedByTrait;
 

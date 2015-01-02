@@ -5,6 +5,8 @@ namespace Zoop\User\DataModel;
 use Doctrine\Common\Collections\ArrayCollection;
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
+use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
+use Zoop\Shard\Stamp\DataModel\UpdatedByTrait;
 use Zoop\Shard\SoftDelete\DataModel\SoftDeleteableTrait;
 use Zoop\Shard\User\DataModel\PasswordTrait;
 use Zoop\Shard\User\DataModel\UserTrait;
@@ -61,6 +63,8 @@ class AbstractUser
 {
     use CreatedOnTrait;
     use UpdatedOnTrait;
+    use CreatedByTrait;
+    use UpdatedByTrait;
     use SoftDeleteableTrait;
     use UserTrait;
     use PasswordTrait;
