@@ -83,10 +83,6 @@ class AbstractUser
     /**
      * @ODM\String
      * @Shard\Serializer\Ignore("ignore_when_serializing")
-     * @Shard\Crypt\BlockCipher(
-     *     key = "crypt.emailaddress",
-     *     salt = "crypt.emailaddress"
-     * )
      * @Shard\Validator\Chain({
      *     @Shard\Validator\Required,
      *     @Shard\Validator\Email
