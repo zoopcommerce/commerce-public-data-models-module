@@ -87,7 +87,7 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * @ODM\Collection
      */
-    protected $domains;
+    protected $domains = [];
 
     /**
      * @ODM\String
@@ -249,6 +249,16 @@ abstract class AbstractEntity implements EntityInterface
     public function setDomains(array $domains)
     {
         $this->domains = $domains;
+    }
+
+    /**
+     * @param string $domain
+     */
+    public function addDomain($domain)
+    {
+        if (!in_array($domain, $this->getDomains())) {
+            $this->domains[] = $domain;
+        }
     }
 
     /**

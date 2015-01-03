@@ -3,6 +3,7 @@
 namespace Zoop\User\DataModel;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Zoop\Shard\Crypt\SaltGenerator;
 use Zoop\Shard\Stamp\DataModel\CreatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\UpdatedOnTrait;
 use Zoop\Shard\Stamp\DataModel\CreatedByTrait;
@@ -94,6 +95,12 @@ class AbstractUser
      * @ODM\EmbedMany(targetDocument="\Zoop\User\DataModel\ApiCredential")
      */
     protected $apiCredentials = [];
+    
+    public function __construct()
+    {
+        //set a default salt because a pre persist isn't working
+        $this->setSalt(SaltGenerator::generateSalt());
+    }
 
     /**
      *
