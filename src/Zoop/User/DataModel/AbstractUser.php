@@ -95,7 +95,7 @@ class AbstractUser
      * @ODM\EmbedMany(targetDocument="\Zoop\User\DataModel\ApiCredential")
      */
     protected $apiCredentials = [];
-    
+
     public function __construct()
     {
         //set a default salt because a pre persist isn't working
